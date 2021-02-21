@@ -2,7 +2,7 @@
 	"name": "limi-tool",
 	"displayName": "limichange toolbox",
 	"description": "limichange toolbox",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"publisher": "limichange",
 	"repository": {
 		"type": "git",
