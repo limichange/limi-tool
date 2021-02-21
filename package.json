@@ -2,7 +2,7 @@
 	"name": "limi-tool",
 	"displayName": "limichange toolbox",
 	"description": "limichange toolbox",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"publisher": "limichange",
 	"repository": {
 		"type": "git",
@@ -23,7 +23,8 @@
 	],
 	"activationEvents": [
 		"onCommand:limi-tool.copyImageCss",
-		"onCommand:limi-tool.createReactComponent"
+		"onCommand:limi-tool.createReactComponent",
+		"onCommand:limi-tool.createImageReactComponent"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -31,6 +32,10 @@
 			{
 				"command": "limi-tool.copyImageCss",
 				"title": "copy image size (css)"
+			},
+			{
+				"command": "limi-tool.createImageReactComponent",
+				"title": "create image component"
 			},
 			{
 				"command": "limi-tool.createReactComponent",
@@ -46,6 +51,10 @@
 				},
 				{
 					"when": "resourceExtname =~ /\\.(png|jpg|jpeg|svg|gif)$/",
+					"command": "limi-tool.createImageReactComponent",
+					"group": "YourGroup@1"
+				},
+				{
 					"command": "limi-tool.createReactComponent",
 					"group": "YourGroup@1"
 				}

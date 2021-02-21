@@ -1,12 +1,25 @@
 import * as path from 'path'
 import * as fs from 'fs-extra'
-import pascalCase from './utils/pascalCase'
-import component from './code/component'
-import style from './code/style'
+import pascalCase from '../utils/pascalCase'
+import component from '../code/component'
+import style from '../code/style'
 import imageSize from 'image-size'
-import getConfig from './utils/getConfig'
+import getConfig from '../utils/getConfig'
+import * as vscode from 'vscode'
 
-export default function createReactComponent(filePath: string) {
+export default async (uri: vscode.Uri, fileList: vscode.Uri[]) => {
+  const list = fileList && fileList.length ? fileList : [uri]
+
+  for (const file of list) {
+    try {
+      await createImageReactComponent(file.path)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+}
+
+function createImageReactComponent(filePath: string) {
   const componentName = pascalCase(path.basename(filePath).split('.')[0])
   const imageSizeInfo = imageSize(filePath)
   const imageFileName = path.basename(filePath)
